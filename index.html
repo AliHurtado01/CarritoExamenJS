@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulido S.L.</title>
+</head>
+<body>
+
+    <h2>Productos Disponibles</h2>
+    <!-- Creamos el input para hacer el filtrado por el concepto o nombre que tiene el producto -->
+    <label>Filtrar por concepto:</label>
+    <input type="text" id="filtro-concepto" oninput="filtrarProductos()">
+    <br><br>
+    
+    <!-- Creamos la tabla para contener los productos-->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Concepto</th>
+                <th>Precio U.</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-productos"></tbody>
+    </table>
+
+    <h2>Factura</h2>
+    
+    <!-- Creamos los botones de selección para el tipo de cliente -->
+    <label>Tipo de Cliente:</label>
+    <input type="radio" name="tipo_cliente" value="particular" checked onclick="calcularTotal()"> Particular
+    <input type="radio" name="tipo_cliente" value="empresa" onclick="calcularTotal()"> Empresa
+    <br><br>
+
+
+    <!-- Creamos el label para la fecha, para que al ponerla pueda comprobar si tiene el descuento de Black Friday-->
+    <label>Fecha:</label>
+    <input type="date" id="fecha-compra" onchange="calcularTotal()">
+    <br><br>
+
+    <!-- Botón de reiniciar la factura para que todos los campos vuelvan a sus campos por defecto-->
+    <button onclick="reiniciarFactura()">Reiniciar Factura</button>
+    <br><br>
+
+
+    <!--Tabla que contendrá los objetos que pasemos a la factura-->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Concepto</th>
+                <th>Cantidad</th>
+                <th>Precio U.</th>
+                <th>Importe</th>
+                <th>Añadir-Quitar</th> 
+            </tr>
+        </thead>
+        <tbody id="tabla-factura"></tbody>
+    </table>
+
+    <h3 id="promocion-info"></h3> <!--Muestra si se aplica para alguna promoción-->
+    <h3 id="total-factura">Total: 0.00 €</h3> <!--Total de la factura-->
+    <button onclick="hacerPedido()">Hacer pedido</button> <!--Botón para hacer el pedido (limpiar)-->
+    <script src="script.js"></script>
+</body>
+</html>
